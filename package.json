@@ -7,12 +7,13 @@
   "proxy": "http://localhost:3000",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "build": "npm install && npm install --prefix client && npm run build --prefix client"
   },
   "author": "Ashutosh Mishra",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

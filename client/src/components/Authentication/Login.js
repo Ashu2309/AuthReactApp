@@ -23,14 +23,14 @@ const Login = () => {
             return;
         }
         const response = await logIn(input)
-        //console.log(response)
+        ////console.log(response)
         if (response && response.status === 200) {
             localStorage.setItem("userInfo", JSON.stringify(response.data))
             toast({
                 title: "Logged in Successfully!",
                 status: "success"
             })
-            navigate("/dashboard")
+            navigate("/in")
         } else {
             toast({
                 title: "Invalid Credentials !",
@@ -49,7 +49,7 @@ const Login = () => {
     const handleInput = (e) => {
         setinput({ ...input, [e.target.name]: e.target.value })
     }
-    //console.log(input)
+    ////console.log(input)
     return (
         <>
             <VStack height="30vh" justifyContent="space-between">

@@ -19,7 +19,7 @@ function Homepage() {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("userInfo"));
-        if (user) navigate("/chats");
+        if (user) navigate("/in");
     }, []);
 
     return (
@@ -35,14 +35,14 @@ function Homepage() {
                 borderWidth="1px"
             >
                 <Text fontSize="4xl" fontFamily="Work sans" textAlign="center">
-                    Chat-Hub
+                    My Movies
                 </Text>
             </Box>
             <Box bg="white" w={{ lg: "40%", md: "80%", base: "100%" }} p={4} borderRadius="lg" borderWidth="1px">
                 <Tabs isFitted variant="enclosed-colored">
                     <TabList mb="1em">
-                        <Tab>Login</Tab>
-                        <Tab>Sign Up</Tab>
+                        <Tab>SignIn</Tab>
+                        <Tab>SignUp</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel >

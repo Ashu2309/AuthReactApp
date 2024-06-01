@@ -32,7 +32,7 @@ export const login = asyncHandler(async (req, res) => {
         const checkPassword = await bcrypt.compare(body.password, userExists.password)
         if (checkPassword) {
             const token = generateJWT(userExists._id);
-            return res.status(200).send({ "name": userExists.name, "email": userExists.email, "pic": userExists.pic, "token": token, "_id": userExists._id })
+            return res.status(200).send({ "username": userExists.username, "email": userExists.email, "pic": userExists.pic, "token": token, "_id": userExists._id })
         } else {
             return res.status(400).send("Incorrect Password");
         }
@@ -41,21 +41,3 @@ export const login = asyncHandler(async (req, res) => {
         res.status(500).send("An error occurred while logging in");
     }
 })
-
-// /api/user/getuser?search=
-export const getUsers = asyncHandler(async (req, res) => {
-    try {
-        const keyword = req.query.search ? {
-            $or: [
-                { name: { $regex: req.query.search, $options: "i" } },
-                { email: { $regex: req.query.search, $options: "i" } },
-            ],
-        } : {};
-        console.log(req.user._id)
-
-        const response = await User.find({ ...keyword, _id: { $ne: req.user._id } })
-        res.status(200).send(response);
-    } catch (error) {
-        res.status(404).send(error);
-    }
-});
